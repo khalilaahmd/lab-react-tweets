@@ -1,33 +1,40 @@
-function Tweet() {
+import React from "react";
+import ProfileImage from "./ProfileImage";
+import User from "./User";
+import Timestamp from "./Timestamp";
+import Message from "./Message";
+
+function Tweet(props) {
   return (
     <div className="tweet">
-      <img
-        src="https://i.imgur.com/9yw1Fyw.jpg"
+      {/* <img
+        src={props.tweet.user.image}
         className="profile"
         alt="profile"
-      />
+      /> */}
+      <ProfileImage image={props.tweet.user.image} />
 
       <div className="body">
         <div className="top">
           <span className="user">
-            <span className="name">Ironhack</span>
-            <span className="handle">@ironhack</span>
+            <span className="name"><User user={props.tweet.user.name} /></span>
+            <span className="handle"><User user= {props.tweet.user.handle} /></span>
           </span>
 
-          <span className="timestamp">Nov 30, 2020</span>
+          {/* <span className="timestamp">{props.tweet.timestamp}</span> */}
+      <Timestamp timestamp={props.tweet.timestamp} />
         </div>
 
         <p className="message">
-          On December 7th, we will be hosting a #webinar that will introduce you
-          to #SQL! Are you ready? 🚀
+        <Message message={props.tweet.message}/>
         </p>
 
         <div className="actions">
           {/* Font Awesome icons */}
-          <i className="far fa-comment"></i>
-          <i className="fas fa-retweet"></i>
-          <i className="far fa-heart"></i>
-          <i className="fas fa-share"></i>
+          <i className="far fa-comment">Comment</i>
+          <i className="fas fa-retweet">Retweet</i>
+          <i className="far fa-heart">Like</i>
+          <i className="fas fa-share">Share</i>
         </div>
       </div>
 
